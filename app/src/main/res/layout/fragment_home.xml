@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    android:id="@+id/RelativeLayout"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Contenedor principal de la vista -->
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/navigation_view"
+        android:layout_alignParentTop="true"
+        tools:ignore="NotSibling,UselessParent">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:ignore="UselessParent">
+
+            <LinearLayout
+                android:id="@+id/indicator_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!-- Aquí se agregan los elementos de la vista que se desplazarán dentro del ScrollView -->
+
+                <!-- Imagen del logo CBTIS214 -->
+                <ImageView
+                    android:id="@+id/cbtis214_logo"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:src="@drawable/logo2"
+                    android:contentDescription="@string/desc_logo_home_m" />
+
+                <!-- Banner carreras y noticias -->
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/viewPagerBanner"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+
+                    tools:ignore="SpeakableTextPresentCheck"
+                    />
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="220dp"
+                        android:src="@drawable/banner"
+                        tools:ignore="ContentDescription" />
+
+                    <Button
+                        android:id="@+id/bottomPlay"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="150dp"
+                        android:layout_marginTop="80dp"
+                        android:background="@drawable/icon_play"
+                        android:backgroundTint="@color/white"
+                        android:backgroundTintMode="add"
+                        android:clickable="true"
+                        android:foregroundTint="@color/white"
+                        android:textColor="@color/white"
+                        tools:ignore="SpeakableTextPresentCheck" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="90dp"
+                    android:src="@drawable/parte_abajo"
+                    tools:ignore="ContentDescription" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_bold"
+                    android:gravity="center"
+                    android:text="@string/txt_1_h" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    tools:ignore="UseCompoundDrawables">
+
+                    <ImageView
+                        android:id="@+id/imageExp1"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:src="@drawable/expediente"
+                        tools:ignore="ContentDescription,ImageContrastCheck" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:fontFamily="@font/poppins_light"
+                        android:textColor="@color/rojo_cbtis"
+                        android:textSize="20sp"
+                        android:text="@string/txt_2_h"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    tools:ignore="UseCompoundDrawables">
+                    <ImageView
+                        android:id="@+id/imageExp2"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:src="@drawable/expediente"
+                        tools:ignore="ContentDescription" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:fontFamily="@font/poppins_light"
+                        android:textColor="@color/rojo_cbtis"
+                        android:textSize="20sp"
+                        android:text="@string/txt_3_h"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    tools:ignore="UseCompoundDrawables">
+                    <ImageView
+                        android:id="@+id/imageExp3"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:src="@drawable/expediente"
+                        tools:ignore="ContentDescription" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:fontFamily="@font/poppins_light"
+                        android:textColor="@color/rojo_cbtis"
+                        android:textSize="20sp"
+                        android:text="@string/txt_4_h"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    tools:ignore="UseCompoundDrawables">
+                    <ImageView
+                        android:id="@+id/imageExp4"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:src="@drawable/expediente"
+                        tools:ignore="ContentDescription" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:fontFamily="@font/poppins_light"
+                        android:textColor="@color/rojo_cbtis"
+                        android:textSize="20sp"
+                        android:text="@string/txt_5_h"/>
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </FrameLayout>
+
+</RelativeLayout>

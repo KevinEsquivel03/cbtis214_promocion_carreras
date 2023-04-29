@@ -1,0 +1,9 @@
+<resources>
+    <integer-array name="banner_images">
+        <item>@drawable/programacion</item>
+        <item>@drawable/diseno</item>
+        <item>@drawable/administracion</item>
+        <item>@drawable/construccion</item>
+        <item>@drawable/contabilidad</item>
+    </integer-array>
+</resources>

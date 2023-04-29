@@ -1,0 +1,36 @@
+<resources>
+
+    <string name="app_name">CBTIS 214</string>
+
+    <!-- Bottom Navigation Menu -->
+    <string name="ic_section_1">Inicio</string>
+    <string name="ic_section_2">Carreras</string>
+    <string name="ic_section_3">Noticias</string>
+    <string name="ic_section_4">Ajustes</string>
+    <!-- //Bottom Navigation Menu// -->
+
+    <!-- Activity Main -->
+
+    <!-- //Activity Main// -->
+
+    <!-- Fragment Courses -->
+    <string name="ImageTextView_c">Oferta educativa</string>
+    <string name="long_txt_1_c">Aspirantes para estudiar la Educación Media Superior, les compartimos la Convocatoria del Proceso de Asignación de Espacios al Nivel Medio Superior - PAENMS 2021 Quintana Roo.</string>
+    <string name="long_txt_2_c"><![CDATA[Período de registro: del 24 de marzo al 4 de mayo de 2021.\n Examen de admisión: 19 y 20 de junio de 2021.]]> </string>
+    <string name="long_txt_3_c">*Deberás crear tu cuenta de registro PAENMS 2021 y seguir el oden numérico del menú de registro en línea para obtener el pase al examen </string>
+    <string name="long_txt_4_c">Carreras</string>
+    <string name="course_1_c">CONSTRUCCIÓN</string>
+    <string name="course_2_c">CONTABILIDAD</string>
+    <string name="course_3_c">DISEÑO GRÁFICO DIGITAL</string>
+    <string name="course_4_c">ADMINISTRACIÓN DE RECURSOS HUMANOS</string>
+    <string name="course_5_c">PROGRAMACIÓN</string>
+    <!-- //Fragment Courses// -->
+
+    <!--Fragment Home-->
+    <string name="desc_logo_home_m">Cbtis214</string>
+    <string name="txt_1_h">Documentos para el proceso de inscripción ciclo escolar 2022 – 2023</string>
+    <string name="txt_2_h">DESCARGA LA CARTA COMPROMISO 2022</string>
+    <string name="txt_3_h">DESCARGA LA CESIÓN DE DERECHOS 2022</string>
+    <string name="txt_4_h">DESCARGA EL ESTUDIO SOCIOECONOMICO 2022</string>
+    <string name="txt_5_h">DESCARGA EL VOLANTE REQUISITOS PARA ENTREGAR EN EXANI.pdf</string>
+</resources>

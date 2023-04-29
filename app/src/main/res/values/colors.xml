@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+
+    <color name="besh_cbtis">#d6c27d</color>
+    <color name="besh_cbtis2">#e8c95f</color>
+    <color name="besh_cbtis3">#AA995D</color>
+
+
+    <color name="azul_cbtis">#223d71</color>
+
+    <color name="rojo_cbtis">#801e2b</color>
+
+
+    <color name="colorBottomNavSelected">#801e2b</color>
+    <color name="colorBottomNavUnselected">#d6c27d</color>
+
+</resources>

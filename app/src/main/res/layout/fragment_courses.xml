@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Contenedor principal de la vista -->
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/navigation_view"
+        android:layout_alignParentTop="true"
+        tools:ignore="NotSibling,UselessParent">
+        <ScrollView
+            android:id="@+id/SV_1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:ignore="UselessParent">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="190dp"
+                >
+
+                <!-- Contenedor de la imagen principal -->
+                <ImageView
+                    android:id="@+id/imageView1"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/oferta_educativa_2"
+                    tools:ignore="ContentDescription,ImageContrastCheck"
+                    />
+
+                <ImageView
+                    android:id="@+id/imageViewShadow"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:scaleX="@android:integer/config_longAnimTime"
+                    android:src="@drawable/shadow_image"
+                    tools:ignore="ContentDescription,ImageContrastCheck"
+                    />
+
+                <TextView
+                    android:id="@+id/textView1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="140dp"
+                    android:layout_marginBottom="16dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="@string/ImageTextView_c"
+                    android:textColor="@color/white"
+                    android:textSize="24sp"
+                    />
+
+                <!-- Contenedor del texto -->
+
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="240dp"
+                    android:layout_marginBottom="16dp"
+                    android:fontFamily="@font/poppins_light"
+                    android:text="@string/long_txt_1_c"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    tools:ignore="VisualLintLongText"
+                    />
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="380dp"
+                    android:layout_marginBottom="16dp"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="@string/long_txt_2_c"
+                    android:textColor="@color/besh_cbtis3"
+                    android:textSize="20sp"
+                    tools:ignore="TextContrastCheck"
+                    />
+
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="520dp"
+                    android:layout_marginBottom="16dp"
+                    android:fontFamily="@font/poppins_light"
+                    android:text="@string/long_txt_3_c"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    tools:ignore="VisualLintLongText"
+                    />
+
+                <!-- Sección de Carreras -->
+                <TextView
+                    android:id="@+id/textView5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="650dp"
+                    android:layout_marginBottom="16dp"
+                    android:fontFamily="@font/poppins_light"
+                    android:text="@string/long_txt_4_c"
+                    android:textColor="@color/azul_cbtis"
+                    android:textSize="18sp"
+                    />
+
+                <!-- CardView Carreras -->
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardView1"
+                    android:layout_width="150dp"
+                    android:layout_height="100dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="700dp"
+                    android:layout_marginBottom="16dp"
+                    android:contextClickable="true"
+                    app:cardBackgroundColor="@color/rojo_cbtis"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="8dp"
+                    tools:ignore="TextSizeCheck"
+                    android:clickable="true"
+
+                    >
+
+                    <TextView
+                        android:id="@+id/textViewCard1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="@string/course_1_c"
+                        android:textAlignment="center"
+                        android:textColor="#FFFFFF"
+                        android:textSize="15sp"
+                        />
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardView2"
+                    android:layout_width="150dp"
+                    android:layout_height="100dp"
+                    android:layout_marginStart="200dp"
+                    android:layout_marginTop="700dp"
+                    android:layout_marginBottom="16dp"
+                    android:contextClickable="true"
+                    app:cardBackgroundColor="@color/besh_cbtis3"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="8dp"
+                    tools:ignore="TextSizeCheck">
+
+                    <TextView
+                        android:id="@+id/textViewCard2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="@string/course_2_c"
+                        android:textAlignment="center"
+                        android:textColor="#FFFFFF"
+                        android:textSize="15sp" />
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardView3"
+                    android:layout_width="150dp"
+                    android:layout_height="100dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="850dp"
+                    android:layout_marginBottom="16dp"
+                    android:contextClickable="true"
+                    app:cardBackgroundColor="@color/besh_cbtis3"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="8dp"
+                    tools:ignore="TextSizeCheck">
+
+                    <TextView
+                        android:id="@+id/textViewCard3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="@string/course_3_c"
+                        android:textAlignment="center"
+                        android:textColor="#FFFFFF"
+                        android:textSize="15sp" />
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardView4"
+                    android:layout_width="150dp"
+                    android:layout_height="100dp"
+                    android:layout_marginStart="200dp"
+                    android:layout_marginTop="850dp"
+                    android:layout_marginBottom="16dp"
+                    android:contextClickable="true"
+                    app:cardBackgroundColor="@color/rojo_cbtis"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="8dp"
+                    tools:ignore="TextSizeCheck"
+                    >
+
+                    <TextView
+                        android:id="@+id/textViewCard4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="@string/course_4_c"
+                        android:textAlignment="center"
+                        android:textColor="#FFFFFF"
+                        android:textSize="15sp"
+                        />
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardView5"
+                    android:layout_width="334dp"
+                    android:layout_height="100dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="1000dp"
+                    android:layout_marginBottom="16dp"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="8dp"
+                    app:cardBackgroundColor="@color/besh_cbtis"
+                    android:contextClickable="true"
+                    >
+
+                    <TextView
+                        android:id="@+id/textViewCard5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/course_5_c"
+                        android:textColor="#FFFFFF"
+                        android:textSize="15sp"
+                        android:layout_gravity="center"
+                        android:textAlignment="center"
+                        android:fontFamily="@font/poppins_semibold"
+                        />
+
+                </androidx.cardview.widget.CardView>
+
+
+
+            </RelativeLayout>
+
+        </ScrollView>
+    </FrameLayout>
+
+
+
+</RelativeLayout>
