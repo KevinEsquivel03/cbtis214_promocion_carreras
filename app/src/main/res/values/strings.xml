@@ -33,4 +33,7 @@
     <string name="txt_3_h">DESCARGA LA CESIÓN DE DERECHOS 2022</string>
     <string name="txt_4_h">DESCARGA EL ESTUDIO SOCIOECONOMICO 2022</string>
     <string name="txt_5_h">DESCARGA EL VOLANTE REQUISITOS PARA ENTREGAR EN EXANI.pdf</string>
+
+    <!-- Custom controls video -->
+    <string name="duration">00:00</string>
 </resources>
