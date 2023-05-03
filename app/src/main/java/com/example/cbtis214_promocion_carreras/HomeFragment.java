@@ -11,6 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import java.util.Objects;
+import java.util.Timer;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -63,36 +64,12 @@ public class HomeFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
-   /*     Button bottomPlay = getView().findViewById(R.id.bottomPlay);
-
-        if (bottomPlay != null) {
-            bottomPlay.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    ((MainActivity)getActivity()).showVideoControls();
-                }
-            });
-        }
-*/
-
-
     }
 
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         // Inflar el layout del Fragmento
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
 
-
-       /* Button bottomPlay = getView().findViewById(R.id.bottomPlay);
-
-        if (bottomPlay != null) {
-            bottomPlay.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    ((MainActivity)getActivity()).showVideoControls();
-                }
-            });
-        }*/
 
         // Devolver la vista del Fragmento
         return rootView;
@@ -112,6 +89,9 @@ public class HomeFragment extends Fragment {
                 }
             });
         }
+
+        Timer timer = new Timer();
+
     }
 
 

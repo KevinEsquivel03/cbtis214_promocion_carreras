@@ -1,11 +1,12 @@
 package com.example.cbtis214_promocion_carreras;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -23,9 +24,10 @@ import com.example.cbtis214_promocion_carreras.databinding.ActivityMainBinding;
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
-    private Handler handler = new Handler();
+    private final Handler handler = new Handler();
+    private int mCurrentPosition = 0;
 
- //   private static final int[] imageIds = {R.drawable.administracion, R.drawable.contabilidad, R.drawable.construccion, R.drawable.programacion, R.drawable.diseno};
+
 
 
     @SuppressLint({"WrongViewCast", "ResourceType", "MissingInflatedId", "NonConstantResourceId"})
@@ -80,108 +82,151 @@ public class MainActivity extends AppCompatActivity {
 
     // Esta función muestra un diálogo con controles de video personalizados
     public void showVideoControls() {
-
-        // Inflar el layout custom_controls_video.xml
         View controlsView = getLayoutInflater().inflate(R.layout.custom_controls_video, null);
-
-        // Obtener una referencia a la vista LinearLayout con ID controlLayout
         LinearLayout controlLayout = controlsView.findViewById(R.id.controlLayout);
-
-
         controlLayout.setVisibility(View.VISIBLE);
 
-
-        // Buscar las vistas dentro del layout personalizado
         VideoView videoView = controlsView.findViewById(R.id.surfaceView);
         ImageButton playPauseButton = controlsView.findViewById(R.id.playPauseButton);
         ImageButton fullscreenButton = controlsView.findViewById(R.id.fullscreenButton);
         ImageButton closeButton = controlsView.findViewById(R.id.backButton);
         ProgressBar loadingSpinner = controlsView.findViewById(R.id.loadingSpinner);
         SeekBar seekBar = findViewById(R.id.seekBar);
+        playPauseButton.setImageResource(android.R.drawable.ic_media_pause);
 
-        if (seekBar != null) {
-            seekBar.setProgress((int) ((float) videoView.getCurrentPosition() / videoView.getDuration() * 100));
-        }
-        // Mostrar el loadingSpinner
+
+
         loadingSpinner.setVisibility(View.VISIBLE);
 
-        // Crear un AlertDialog que muestre el layout personalizado
         AlertDialog.Builder builder = new AlertDialog.Builder(this, androidx.appcompat.R.style.Theme_AppCompat_Light_Dialog_Alert);
         builder.setView(controlsView);
 
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
 
-        // Configurar el videoView con el archivo de video que deseas reproducir
+        setupVideoView(videoView);
+        setupPlayPauseButton(playPauseButton, videoView);
+        setupFullscreenButton(fullscreenButton, videoView);
+        setupCloseButton(closeButton, alertDialog);
+        hideLoadingSpinner(loadingSpinner);
+    }
+
+    private void setupVideoView(VideoView videoView) {
         String videoPath = "android.resource://" + getPackageName() + "/" + R.raw.prom_video_cbtis;
         Uri videoUri = Uri.parse(videoPath);
         videoView.setVideoURI(videoUri);
         videoView.start();
+    }
 
-        // Configurar los botones
-        playPauseButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (videoView.isPlaying()) {
-                    videoView.pause();
-                    playPauseButton.setImageResource(android.R.drawable.ic_media_play);
-                } else {
-                    videoView.start();
-                    playPauseButton.setImageResource(android.R.drawable.ic_media_pause);
+    private void setupPlayPauseButton(ImageButton playPauseButton, VideoView videoView) {
+        playPauseButton.setOnClickListener(v -> {
+            if (videoView.isPlaying()) {
+                videoView.pause();
+                playPauseButton.setImageResource(android.R.drawable.ic_media_play);
+            } else {
+                videoView.start();
+                playPauseButton.setImageResource(android.R.drawable.ic_media_pause);
+            }
+        });
+    }
+
+    private void setupFullscreenButton(ImageButton fullscreenButton, VideoView videoView) {
+        fullscreenButton.setOnClickListener(v -> {
+            setupFullscreen(videoView, fullscreenButton);
+        });
+    }
+
+    private void setupFullscreen(VideoView videoView, ImageButton fullscreenButton) {
+        videoView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN | View.SYSTEM_UI_FLAG_IMMERSIVE | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION );
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+
+        View decorView = getWindow().getDecorView();
+        decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN | View.SYSTEM_UI_FLAG_IMMERSIVE | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
+
+        fullscreenButton.setImageResource(android.R.drawable.ic_menu_close_clear_cancel);
+        fullscreenButton.setOnClickListener(v -> {
+            exitFullscreen(videoView, fullscreenButton);
+        });
+    }
+
+    private void exitFullscreen(VideoView videoView, ImageButton fullscreenButton) {
+        videoView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_VISIBLE);
+
+        View decorView = getWindow().getDecorView();
+        decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_VISIBLE);
+
+        fullscreenButton.setImageResource(android.R.drawable.ic_menu_crop);
+        fullscreenButton.setOnClickListener(v -> {
+            setupFullscreen(videoView, fullscreenButton);
+        });
+    }
+
+    private void setupCloseButton(ImageButton closeButton, AlertDialog alertDialog) {
+        closeButton.setOnClickListener(v -> {
+            alertDialog.dismiss();
+        });
+    }
+
+    private void hideLoadingSpinner(ProgressBar loadingSpinner) {
+        handler.postDelayed(() -> {
+            loadingSpinner.setVisibility(View.GONE);
+        }, 3000);
+    }
+
+    public void setupSeekBarListener(SeekBar seekBar, VideoView videoView){
+
+        int DELAY_DURATION = 1000;
+
+        if (seekBar != null) {
+            seekBar.setMax(videoView.getDuration());
+            //seekBar.setProgress((int) ((float) videoView.getCurrentPosition() / videoView.getDuration() * 100));
+
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    seekBar.setProgress((int) ((float)videoView.getCurrentPosition()));
+                    handler.postDelayed(this, DELAY_DURATION);
                 }
+            }, 0);
+
+
+
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+
+            onProgressChanged(seekBar, seekBar.)
+
             }
-        });
+        }
+    }
 
-        fullscreenButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Configurar el videoView para que ocupe toda la pantalla
-                videoView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN | View.SYSTEM_UI_FLAG_IMMERSIVE | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
+    private void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser){
+        // Si el cambio en el valor de la seekBar provino del usuario, actualizamos la posición actual
+        if (fromUser) {
+            mCurrentPosition = progress;
+        }
+    }
 
-                // Configurar la actividad para que oculte la barra de navegación
-                View decorView = getWindow().getDecorView();
-                decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN | View.SYSTEM_UI_FLAG_IMMERSIVE | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
+    public void onStartTrackingTouch(SeekBar seekBar) {
+        // No hacemos nada al empezar a mover la seekBar
+    }
 
-                // Configurar el botón para que salga de pantalla completa
-                fullscreenButton.setImageResource(android.R.drawable.ic_menu_close_clear_cancel);
-                fullscreenButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        // Configurar el videoView para que vuelva a su tamaño original
-                        videoView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_VISIBLE);
+    public void onStopTrackingTouch(SeekBar seekBar, VideoView videoView) {
+        // Cuando se deja de mover la seekBar, actualizamos la posición actual y saltamos a esa posición en el video
+        mCurrentPosition = seekBar.getProgress();
+        videoView.seekTo(mCurrentPosition);
+    }
 
-                        // Configurar la actividad para que muestre la barra de navegación
-                        View decorView = getWindow().getDecorView();
-                        decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_VISIBLE);
-
-                        // Configurar el botón para que vuelva a pantalla completa
-                        fullscreenButton.setImageResource(android.R.drawable.ic_menu_crop);
-                        fullscreenButton.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                showVideoControls();
-                            }
-                        });
-                    }
-                });
-            }
-        });
-
-        closeButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                alertDialog.dismiss();
-            }
-        });
-
-        // Ocultar el loadingSpinner
+    public void updateSeekBarPosition(VideoView videoView, SeekBar seekBar){
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                loadingSpinner.setVisibility(View.GONE);
+                if (videoView.isPlaying()) {
+                    mCurrentPosition = videoView.getCurrentPosition();
+                    seekBar.setProgress(mCurrentPosition);
+                }
+                handler.postDelayed(this, 1000); // actualizamos la seekBar cada segundo
             }
-        }, 3000);
-
+        }, 1000);
     }
 
     @Override
