@@ -173,7 +173,7 @@ public class MainActivity extends AppCompatActivity {
         }, 3000);
     }
 
-    public void setupSeekBarListener(SeekBar seekBar, VideoView videoView){
+ /*   public void setupSeekBarListener(SeekBar seekBar, VideoView videoView){
 
         int DELAY_DURATION = 1000;
 
@@ -197,7 +197,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         }
-    }
+    }*/
 
     private void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser){
         // Si el cambio en el valor de la seekBar provino del usuario, actualizamos la posición actual
